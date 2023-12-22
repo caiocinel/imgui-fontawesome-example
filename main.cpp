@@ -41,18 +41,24 @@ int main(int, char**)
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 
+
+
     static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
     ImFontConfig icons_config;
     ImFontConfig font_config;
-    icons_config.MergeMode = true;
+    icons_config.MergeMode = true; // Merge icon font to the previous font if you want to have both icons and text
     io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Verdana.ttf", 16.0f);
-    io.Fonts->AddFontFromMemoryCompressedTTF(FA_compressed_data, FA_compressed_size, 16.0f, &icons_config, icons_ranges);
+    io.Fonts->AddFontFromMemoryCompressedTTF(FA_compressed_data, FA_compressed_size, 16.0f, &icons_config, icons_ranges); 
+
+    //If you want change between icons size you will need to create a new font
+    //io.Fonts->AddFontFromMemoryCompressedTTF(FA_compressed_data, FA_compressed_size, 12.0f, &icons_config, icons_ranges);
+    //io.Fonts->AddFontFromMemoryCompressedTTF(FA_compressed_data, FA_compressed_size, 20.0f, &icons_config, icons_ranges);
+
+    //To use brands icons you need do the same steps but using the brands header
+    //If a quotation mark is displayed instead of the icon, probably the Icon header and Font Awesome version are not the same
+
     io.Fonts->Build();
-
-
-
     ImGui::StyleColorsDark();
-
     ImGui_ImplWin32_Init(hwnd);
     ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
 
@@ -104,7 +110,23 @@ int main(int, char**)
             ImGui::Text(ICON_FA_EXPLOSION" = %d", counter);
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+
+            ImGui::Text(ICON_FA_ADDRESS_BOOK 
+                ICON_FA_ADDRESS_CARD 
+                ICON_FA_FACE_ANGRY 
+                ICON_FA_CIRCLE_ARROW_DOWN
+                ICON_FA_BACKWARD
+                ICON_FA_BACON
+                ICON_FA_BACTERIA
+                ICON_FA_BACTERIUM
+                ICON_FA_BAHAI
+                ICON_FA_BAN
+                ICON_FA_ANCHOR
+                ICON_FA_BARCODE
+                ICON_FA_BARS);
+
             ImGui::End();
+
         }
 
         ImGui::Render();
