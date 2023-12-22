@@ -4,8 +4,8 @@
 #include <d3d11.h>
 #include <tchar.h>
 
-#include "fonts/IconsFontAwesome6.h" // Generated using https://github.com/juliettef/IconFontCppHeaders
-#include "fonts/fa.h" //Read the fa.h file to see how generate this file
+#include "fonts/IconsFontAwesome6.h"
+#include "fonts/fa.h"
 
 static ID3D11Device*            g_pd3dDevice = nullptr;
 static ID3D11DeviceContext*     g_pd3dDeviceContext = nullptr;
